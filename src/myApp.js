@@ -329,27 +329,28 @@ var MoleLayer = cc.Layer.extend({
     handleResult:function (win) {
         this.setTouchEnabled(false);
 
-        if (win) {
+        if (win && config.UseCustomWinUrl) {
             window.location.href = 'TXwud/index.html';
-        } else {
-            var resultLayer = new ResultLayer();
-            resultLayer.init(win);
-            resultLayer.setPosition(0, 1136);
-            this.addChild(resultLayer, 200);
-
-            var action1 = cc.MoveTo.create(0.3, cc.p(0, -50));
-            var action2 = cc.MoveTo.create(0.05, cc.p(0, 0));
-            var resetEditBox = function () {
-                resultLayer.setTouchEnabled(true);
-
-                if (resultLayer.inputPhone != null) {
-                    resultLayer.inputPhone.setPosition(235, 409);
-                    resultLayer.inputPhone.setTouchEnabled(true);
-                }
-            };
-            var action3 = cc.CallFunc.create(resetEditBox, resultLayer);
-            resultLayer.runAction(cc.Sequence.create(action1, action2, action3));
+            return；
         }
+        
+        var resultLayer = new ResultLayer();
+        resultLayer.init(win);
+        resultLayer.setPosition(0, 1136);
+        this.addChild(resultLayer, 200);
+
+        var action1 = cc.MoveTo.create(0.3, cc.p(0, -50));
+        var action2 = cc.MoveTo.create(0.05, cc.p(0, 0));
+        var resetEditBox = function () {
+            resultLayer.setTouchEnabled(true);
+
+            if (resultLayer.inputPhone != null) {
+                resultLayer.inputPhone.setPosition(235, 409);
+                resultLayer.inputPhone.setTouchEnabled(true);
+            }
+        };
+        var action3 = cc.CallFunc.create(resetEditBox, resultLayer);
+        resultLayer.runAction(cc.Sequence.create(action1, action2, action3));
     },
 
     onTouchesBegan:function (touches, event) {

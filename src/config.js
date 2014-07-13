@@ -12,6 +12,8 @@ config.KeyProbability = 0.1;
 config.GhostReduceTime = 1;
 //从洞中出来玑哥的概率
 config.JiGeOutProbability = 0.7;
+//获胜后是否转到指定的url
+config.UseCustomWinUrl = false;
 
 //点击“武斗”按钮函数回调
 var wudouCallback = function () {
