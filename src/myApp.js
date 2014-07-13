@@ -331,7 +331,7 @@ var MoleLayer = cc.Layer.extend({
 
         if (win && config.UseCustomWinUrl) {
             window.location.href = 'TXwud/index.html';
-            return；
+            return;
         }
         
         var resultLayer = new ResultLayer();
